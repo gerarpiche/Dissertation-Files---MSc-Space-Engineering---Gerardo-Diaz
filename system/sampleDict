@@ -1,0 +1,54 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.4.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      sampleDict;
+}
+
+// Sampling settings
+interpolationScheme cellPoint;
+setFormat raw;
+
+// Define the surfaces to sample
+sets
+(
+    inletSample
+    {
+        type        surface;
+        function    sample;
+        fields      (dsmcRhoN);
+        surfaceType patch;
+        patches     (Inlet);
+        interpolationScheme cell;
+    }
+
+    outletSample
+    {
+        type        surface;
+        function    sample;
+        fields      (dsmcRhoN);
+        surfaceType patch;
+        patches     (Outlet);
+        interpolationScheme cell;
+    }
+);
+// ************************************************************************* //
